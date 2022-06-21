@@ -21,7 +21,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print(torch.cuda.is_available())
 
 n_epochs = 5000
-learning_rate = 3e-06
+learning_rate = 3e-05
 batch_size = 10
 image_height = 512  # 224
 image_width = 512  # 224
@@ -321,5 +321,5 @@ val_loader = DataLoader(
 loss_fn = nn.CrossEntropyLoss()
 #model = FCN_VIT(Encoder, Decoder, device).to(device)
 model = torch.load("./models/v10/latest_aug.pth")
-optimizer = optim.AdamW(model.parameters(), lr=learning_rate, weight_decay=1e-6)
+optimizer = optim.AdamW(model.parameters(), lr=learning_rate, weight_decay=1e-5)
 train(n_epochs, train_loader, model, optimizer, loss_fn)
